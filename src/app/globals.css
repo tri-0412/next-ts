@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* Nút với các hạt di chuyển bên trong */
+.custom-flying-button {
+  @apply flex items-center justify-center relative overflow-hidden;
+  z-index: 10;
+}
+
+.custom-flying-button:hover .particle {
+  animation: particle-hover 1s forwards;
+}
+
+/* Điều chỉnh hạt nhỏ hơn và hiệu ứng di chuyển */
+.particle {
+  position: absolute;
+  width: 3px; /* Giảm kích thước hạt */
+  height: 3px; /* Giảm kích thước hạt */
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes particle-hover {
+  0% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-15px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(0.5);
+    opacity: 0.4;
+  }
+}
+
+/* Hiệu ứng di chuyển cho hạt */
+@keyframes particle-move {
+  0% {
+    transform: translateY(30px) scale(0.5);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-20px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(30px) scale(0.5);
+    opacity: 0.6;
+  }
+}
+
+.custom-flying-button {
+  position: relative;
+}
+
+.custom-flying-button:hover .particle {
+  animation: particle-move 2s ease-in-out forwards;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  appearance: textfield; /* Đối với Firefox */
+}
